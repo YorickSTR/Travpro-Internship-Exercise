@@ -1,9 +1,13 @@
-import { React, useState, useEffect } from "react";
+import { React } from "react";
 
 const List = ({ items, onClick }) => {
+  let resultAmount = "Loading results...";
+  if (items.length > 0) {
+    resultAmount = "Amount of results: " + items.length;
+  }
   return (
     <div className="List">
-      <p id="amount"> Amount of results: {items.length} </p>
+      <p id="amount"> {resultAmount} </p>
       {items.map((item) => (
         <div key={item.company} className="Item">
           <p id="company"> {item.company} </p>

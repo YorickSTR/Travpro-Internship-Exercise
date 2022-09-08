@@ -1,23 +1,28 @@
+body {
+    margin: 0;
+}
+
 .App {
     display:flex;
-    .List {        
-        width:750px;
-        background-color: #f4f4f4;
-        justify-content:space-evenly;
-        
-        .Item {
-          height: 180px;
-          background-color:white;
-          box-shadow: 0.5px 0.5px  5px #aaaaaa;
-          padding:50px;
-          width:30%;
-          margin:2%;
-            display:inline-block;
-         }
-         #amount {
-         text-transform: uppercase;
+        .List {        
+            width:750px;
+            background-color: #f4f4f4;
+            justify-content:space-evenly;
+            
+                .Item {
+                height: 180px;
+                background-color:white;
+                box-shadow: 0.5px 0.5px  5px #aaaaaa;
+                padding:50px;
+                width:30%;
+                margin:2%;
+                    display:inline-block;
+                }
+                #amount {
+                text-transform: uppercase;
+                margin-left:2%;
+                }
         }
-      }
         .Map {
             width:auto;
             background-color:blue;
