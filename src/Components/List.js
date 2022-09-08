@@ -1,7 +1,6 @@
 import { React, useState, useEffect } from "react";
 
 const List = ({ items }) => {
-  console.log(items);
   return (
     <div className="List">
       <p id="amount"> Amount of results</p>

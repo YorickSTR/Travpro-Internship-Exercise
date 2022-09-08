@@ -1,10 +1,23 @@
 .App {
     display:flex;
-        .List {
-            width:800px!important;
-            background-color:red;
-            height: 100vh;
+    .List {        
+        width:43%;
+        background-color: #f4f4f4;
+        justify-content:space-evenly;
+        
+        .Item {
+          height: 180px;
+          background-color:white;
+          box-shadow: 0.5px 0.5px  5px #aaaaaa;
+          padding:50px;
+          width:30%;
+          margin:2%;
+            display:inline-block;
+         }
+         #amount {
+         text-transform: uppercase;
         }
+      }
         .Map {
             width:50%;
             background-color:blue;
