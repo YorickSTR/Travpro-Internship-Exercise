@@ -1,7 +1,7 @@
 .App {
     display:flex;
     .List {        
-        width:43%;
+        width:750px;
         background-color: #f4f4f4;
         justify-content:space-evenly;
         
@@ -19,7 +19,7 @@
         }
       }
         .Map {
-            width:50%;
+            width:auto;
             background-color:blue;
             height: 100vh;
         }
