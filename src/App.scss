@@ -1,0 +1,14 @@
+.App {
+    display:flex;
+        .List {
+            width:800px!important;
+            background-color:red;
+            height: 100vh;
+        }
+        .Map {
+            width:50%;
+            background-color:blue;
+            height: 100vh;
+        }
+}
+
