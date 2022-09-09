@@ -10,17 +10,17 @@ body {
             justify-content:space-evenly;
             
                 .Item {
-                height: 180px;
-                background-color:white;
-                box-shadow: 0.5px 0.5px  5px #aaaaaa;
-                padding:50px;
-                width:30%;
-                margin:2%;
+                    height: 180px;
+                    background-color:white;
+                    box-shadow: 0.5px 0.5px  5px #aaaaaa;
+                    padding:50px;
+                    width:30%;
+                    margin:2%;
                     display:inline-block;
                 }
                 #amount {
-                text-transform: uppercase;
-                margin-left:2%;
+                    text-transform: uppercase;
+                    margin-left:2%;
                 }
         }
         .Map {
