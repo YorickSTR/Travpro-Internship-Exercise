@@ -16,10 +16,11 @@ const defaultCenter = {
   lng: -115.139832,
 };
 
-const Map = ({ items, marker }) => {
+const Map = ({ items, marker, handleCoordsApp }) => {
   const [center, setCenter] = useState(defaultCenter);
   const [zoom, setZoom] = useState(11);
   const [activeMarker, setActiveMarker] = useState(null);
+  const [mapInst, setMapInst] = useState(null);
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -33,8 +34,16 @@ const Map = ({ items, marker }) => {
     setActiveMarker(marker);
   };
 
+  const handleCoords = (e) => {
+    let bounds = mapInst.getBounds();
+    let ne = bounds.getNorthEast();
+    let sw = bounds.getSouthWest();
+    handleCoordsApp(ne.lat(), sw.lat(), ne.lng(), sw.lng());
+  };
+
   useEffect(() => {
     if (marker) {
+      handleActiveMarker(marker.listing_id);
       setCenter({
         lat: Number(marker.latitude),
         lng: Number(marker.longitude),
@@ -52,13 +61,18 @@ const Map = ({ items, marker }) => {
   //   });
   // });
 
+  const onLoad = React.useCallback(function onLoad(mapInstance) {
+    setMapInst(mapInstance);
+  });
+
   return isLoaded ? (
     <GoogleMap
       className="Map"
       mapContainerStyle={containerStyle}
       center={center}
       zoom={zoom}
-      onDrag={(e) => console.log("dragging")}
+      onLoad={onLoad}
+      onBoundsChanged={(e) => handleCoords(e)}
       onClick={() => setActiveMarker(null)}
     >
       {items.map((item) => {
@@ -77,7 +91,18 @@ const Map = ({ items, marker }) => {
           >
             {activeMarker === item.listing_id ? (
               <InfoWindow onCloseClick={() => setActiveMarker(null)}>
-                <div>{item.company}</div>
+                <div>
+                  <b>{item.company}</b>
+                  <p>
+                    {item.zip}
+                    <span>, </span>
+                    <span> {item.city} </span>
+                    <p>{item.addr1}</p>
+                  </p>
+                  <a className="callHotelBtn" href={"tel: " + item.phone}>
+                    Call
+                  </a>
+                </div>
               </InfoWindow>
             ) : null}
           </Marker>
