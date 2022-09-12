@@ -1,4 +1,7 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
+import styled from "styled-components";
+import "../App.scss";
+
 import {
   GoogleMap,
   useJsApiLoader,
@@ -7,8 +10,10 @@ import {
 } from "@react-google-maps/api";
 
 const containerStyle = {
-  width: "50%",
+  display: "flex",
+  width: "40vw",
   height: "100vh",
+  float: "right",
 };
 
 const defaultCenter = {
@@ -48,7 +53,7 @@ const Map = ({ items, marker, handleCoordsApp }) => {
         lat: Number(marker.latitude),
         lng: Number(marker.longitude),
       });
-
+      console.log("zoom");
       setZoom(15);
       console.log(Number(marker.latitude));
       console.log(Number(marker.longitude));
@@ -66,51 +71,54 @@ const Map = ({ items, marker, handleCoordsApp }) => {
   });
 
   return isLoaded ? (
-    <GoogleMap
-      className="Map"
-      mapContainerStyle={containerStyle}
-      center={center}
-      zoom={zoom}
-      onLoad={onLoad}
-      onBoundsChanged={(e) => handleCoords(e)}
-      onClick={() => setActiveMarker(null)}
-    >
-      {items.map((item) => {
-        let position = {
-          lat: Number(item.latitude),
-          lng: Number(item.longitude),
-        };
+    <div id="googleMaps">
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={center}
+        zoom={zoom}
+        onLoad={onLoad}
+        onBoundsChanged={(e) => handleCoords(e)}
+        onClick={() => setActiveMarker(null)}
+      >
+        {items.map((item) => {
+          let position = {
+            lat: Number(item.latitude),
+            lng: Number(item.longitude),
+          };
 
-        return (
-          <Marker
-            className="Marker"
-            useJsApiLoader
-            key={item.listing_id}
-            position={position}
-            onClick={() => handleActiveMarker(item.listing_id)}
-          >
-            {activeMarker === item.listing_id ? (
-              <InfoWindow onCloseClick={() => setActiveMarker(null)}>
-                <div>
-                  <b>{item.company}</b>
-                  <p>
-                    {item.zip}
-                    <span>, </span>
-                    <span> {item.city} </span>
-                    <p>{item.addr1}</p>
-                  </p>
-                  <a className="callHotelBtn" href={"tel: " + item.phone}>
-                    Call
-                  </a>
-                </div>
-              </InfoWindow>
-            ) : null}
-          </Marker>
-        );
-      })}
-    </GoogleMap>
+          return (
+            <Marker
+              className="Marker"
+              useJsApiLoader
+              key={item.listing_id}
+              position={position}
+              onClick={() => handleActiveMarker(item.listing_id)}
+            >
+              {activeMarker === item.listing_id ? (
+                <InfoWindow onCloseClick={() => setActiveMarker(null)}>
+                  <div>
+                    <b>{item.company}</b>
+                    <p>
+                      {item.zip}
+                      <span>, </span>
+                      <span> {item.city} </span>
+                      <p>{item.addr1}</p>
+                    </p>
+                    <a className="callHotelBtn" href={"tel: " + item.phone}>
+                      Call
+                    </a>
+                  </div>
+                </InfoWindow>
+              ) : null}
+            </Marker>
+          );
+        })}
+      </GoogleMap>
+    </div>
   ) : (
-    <></>
+    <>
+      <p> No map to show </p>
+    </> // Nog iets toevoegen als de map niet kan laden
   );
 };
 

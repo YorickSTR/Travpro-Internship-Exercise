@@ -1,33 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+* {
+    box-sizing: border-box;
+  }
+
 body {
     margin: 0;
+    font-family: 'Ubuntu', sans-serif;
+
 }
 
 .App {
+    position: absolute;
     display:flex;
-        .List {        
-            width:750px;
-            background-color: #f4f4f4;
-            justify-content:space-evenly;
-            
-                .Item {
-                    height: 180px;
-                    background-color:white;
-                    box-shadow: 0.5px 0.5px  5px #aaaaaa;
-                    padding:50px;
-                    width:30%;
-                    margin:2%;
-                    display:inline-block;
-                }
-                #amount {
-                    text-transform: uppercase;
-                    margin-left:2%;
-                }
-        }
-        .Map {
-            width:auto;
-            background-color:blue;
-            height: 100vh;
-        }
         .callHotelBtn {
             text-decoration:none;
             background-color: rgb(226, 48, 41);
@@ -39,3 +24,10 @@ body {
         }
 }
 
+
+#googleMaps {
+    float:right;
+    position:fixed;
+    right: 0;
+    top:0;
+}
