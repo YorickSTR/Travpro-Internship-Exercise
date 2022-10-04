@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+* {
+    box-sizing: border-box;
+  }
+
+body {
+    margin: 0;
+    font-family: 'Ubuntu', sans-serif;
+
+}
+
+.App {
+    position: absolute;
+    display:flex;
+        .callHotelBtn {
+            text-decoration:none;
+            background-color: rgb(226, 48, 41);
+            color:white;
+            padding:5px;
+            float:right;
+            font-weight:bold;
+            border-radius:3px;
+        }
+}
+
+
+#googleMaps {
+    float:right;
+    position:fixed;
+    right: 0;
+    top:0;
+}
